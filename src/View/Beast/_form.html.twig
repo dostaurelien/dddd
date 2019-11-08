@@ -2,38 +2,38 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="title">Name :</label>
-            <input type="text" class="form-control" name="name">
+            <input type="text" class="form-control" name="name" value="{{ beast.name }}">
         </div>
         <div class="form-group col-md-6">
             <label for="area">Area :</label>
-            <input type="text" class="form-control" name="area">
+            <input type="text" class="form-control" name="area" value="{{ beast.area }}">
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="area">Picture :</label>
-            <input type="url" class="form-control" name="picture" id="picture"/>
+            <input type="url" class="form-control" name="picture" id="picture" value="{{ beast.picture}}"/>
         </div>
         <div class="form-group col-md-6">
             <label for="size">Size (in meter):</label>
-            <input type="text" class="form-control" name="size" id="size"/>
+            <input type="text" class="form-control" name="size" id="size" value="{{ beast.size}}"/>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="planet">Planet :</label>
             <select name="planet" class="custom-select" id="planet">
-                <option value="Planet">Planet name</option>
-                <option value="Planet">Planet name</option>
-                <option value="Planet">Planet name</option>
+                {% for planet in planets %}
+                    <option value="{{ planet.id }}" {% if planet.id == beast.id_planet %}selected{% endif %}>{{ planet.name }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="form-group col-md-6">
             <label for="movies">Movie :</label>
             <select name="movie" class="custom-select" id="movies">
-                <option value="Movie">Movie title</option>
-                <option value="Movie">Movie title</option>
-                <option value="Movie">Movie title</option>
+                {% for movie in movies %}
+                    <option value="{{ movie.id }}" {% if movie.id == beast.id_movie %}selected{% endif %}>{{ movie.title }}</option>
+                {% endfor %}
             </select>
         </div>
     </div>
